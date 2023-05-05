@@ -1,31 +1,53 @@
-# Criando o catálogo com 5 produtos
-catalogo = {
-    "1": {"produto": "Cabernet Franc Gran Reserva ", "preco": 110.00 , "quantidade": 5},
-    "2": {"produto": "Carmenere Reserva", "preco": 120.00 , "quantidade": 5},
-    "3": {"produto": "Chianti Clássico ", "preco": 120.00 , "quantidade": 5},
-    "4": {"produto": "Tempranillo Gran Reserva", "preco": 150.00, "quantidade": 5},
-    "5": {"produto": "Tempranillo Gran Reserva", "preco": 180.00, "quantidade": 5}
-}
+nome=[]
+cnpjj=[]
+quant=[]
+vlt=[]
 
-# Imprimindo o catálogo para o cliente
-print("Catálogo de produtos:")
-for codigo, produto in catalogo.items():
-    print(f"{codigo} - {produto['produto']} - R${produto['preco']}")
+while True:
+    opcao = int(input("Digite a opção desejada:\n1 para controle de estoque\n2 para controle de compras \n"))
 
-# Solicitando ao cliente qual produto deseja e a quantidade
-codigo_produto = input("Digite o código do produto desejado: ")
-quantidade = int(input("Digite a quantidade desejada: "))
+    match opcao:
+        case 1:
+            print("Controle de estoque selecionado")
 
-# Obtendo o produto escolhido
-produto_escolhido = catalogo[codigo_produto]
+        case 2:
+            while True:
+                opcao2 = int(input("Digite:\n1 para registrar compra de produto\n2 para ver histórico de compras\n"))
 
-# Calculando o valor total da compra
-valor_total = quantidade * produto_escolhido["preco"]
+                if opcao2 == 1:
+                    cnpj = input("Digite o CNPJ do fornecedor: ")    
+                    nompr = input("Digite o nome do produto comprado: ")
+                    descricao = input("Digite a descrição do produto: ")
+                    preco = float(input("Digite o preço do produto: "))
+                    quantidade = int(input("Digite a quantidade que comprou: "))
+                    valort = quantidade * preco
 
-# Imprimindo as informações da compra
-print(f"\nProduto escolhido: {produto_escolhido['produto']}")
-print(f"Preço unitário: R${produto_escolhido['preco']}")
-print(f"Quantidade: {quantidade}")
-print(f"Valor total: R${valor_total}")
+                    nome.append(nompr)
+                    cnpjj.append(cnpj)
+                    quant.append(quantidade)
+                    vlt.append(valort)
 
-print("Obrigado pela compra! Volte sempre.")
+                    print("\nResumo da compra:")
+                    print(f"CNPJ do fornecedor: {cnpj}")
+                    print(f"Nome do produto: {nompr}")
+                    print(f"Descrição: {descricao}")
+                    print(f"Quantidade: {quantidade}")
+                    print(f"Valor total da compra: {valort}\n")
+
+                elif opcao2 == 2:
+                    print("\nHistórico de compras:")
+                    for i in range(len(nome)):
+                        print(f"CNPJ do fornecedor: {cnpjj[i]}")
+                        print(f"Nome do produto: {nome[i]}")
+                        print(f"Quantidade: {quant[i]}")
+                        print(f"Valor total da compra: {vlt[i]}\n")
+
+                else:
+                    print("Opção inválida. Tente novamente.")
+
+                continuar = input("\nDeseja continuar? Digite 's' para continuar ou qualquer outra tecla para não.\n")
+                if continuar != 's':
+                    break
+
+        case _:
+            print("Opção inválida. Tente novamente.")

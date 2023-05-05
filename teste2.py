@@ -1,82 +1,53 @@
-opcao = int(input("Digite a opção desejada: \n 1 para controle de estoque \n 2 para realizar novas compras \n "))
+nome=[]
+cnpjj=[]
+quant=[]
+vlt=[]
 
-match opcao:
-    case 2:
-     print("opção de realizar nova compra selecionada")
-     cnpj= input("digite o cnpj para continuar: ")
-     catalogo = [ 
+while True:
+    opcao = int(input("Digite a opção desejada:\n1 para controle de estoque\n2 para controle de compras \n"))
 
-    {"codigo": 1, "produto": "Cabernet Franc Gran Reserva ", "preco": 110.00, }, 
+    match opcao:
+        case 1:
+            print("Controle de estoque selecionado")
 
-    {"codigo": 2, "produto": "Carmenere Reserva", "preco": 120.00 ,}, 
+        case 2:
+            while True:
+                opcao2 = int(input("Digite:\n1 para registrar compra de produto\n2 para ver histórico de compras\n"))
 
-    {"codigo": 3, "produto": "Chianti Clássico ", "preco": 120.00 , }, 
+                if opcao2 == 1:
+                    cnpj = input("Digite o CNPJ do fornecedor: ")    
+                    nompr = input("Digite o nome do produto comprado: ")
+                    descricao = input("Digite a descrição do produto: ")
+                    preco = float(input("Digite o preço do produto: "))
+                    quantidade = int(input("Digite a quantidade que comprou: "))
+                    valort = quantidade * preco
 
-    {"codigo": 4, "produto": "Tempranillo Gran Reserva", "preco": 150.00, }, 
+                    nome.append(nompr)
+                    cnpjj.append(cnpj)
+                    quant.append(quantidade)
+                    vlt.append(valort)
 
-    {"codigo": 5, "produto": "Chardonnay", "preco": 180.00, } 
+                    print("\nResumo da compra:")
+                    print(f"CNPJ do fornecedor: {cnpj}")
+                    print(f"Nome do produto: {nompr}")
+                    print(f"Descrição: {descricao}")
+                    print(f"Quantidade: {quantidade}")
+                    print(f"Valor total da compra: {valort}\n")
 
-] 
+                elif opcao2 == 2:
+                    print("\nHistórico de compras:")
+                    for i in range(len(nome)):
+                        print(f"CNPJ do fornecedor: {cnpjj[i]}")
+                        print(f"Nome do produto: {nome[i]}")
+                        print(f"Quantidade: {quant[i]}")
+                        print(f"Valor total da compra: {vlt[i]}\n")
 
- 
- 
+                else:
+                    print("Opção inválida. Tente novamente.")
 
-# Imprimindo o catálogo 
+                continuar = input("\nDeseja continuar? Digite 's' para continuar ou qualquer outra tecla para não.\n")
+                if continuar != 's':
+                    break
 
-print("Catálogo de produtos:") 
-
-for produto in catalogo: 
-
-      print(f"{produto['codigo']} - {produto['produto']} - R${produto['preco']}") 
-
- 
- 
-
-# Solicitando ao cliente quais produtos deseja e as quantidades 
-
-carrinho = [] 
-
-continuar_comprando = True 
-
-while continuar_comprando: 
-
-    codigo_produto = int(input("Digite o código do produto desejado (ou 0 para finalizar): ")) 
-
-    if codigo_produto == 0: 
-
-        continuar_comprando = False 
-
-    else: 
-
-        quantidade = int(input("Digite a quantidade desejada: ")) 
-
-        produto_escolhido = next((produto for produto in catalogo if produto['codigo'] == codigo_produto), None) 
-
-        if produto_escolhido: 
-
-            carrinho.append({"produto": produto_escolhido['produto'], "preco": produto_escolhido['preco'], "quantidade": quantidade}) 
-
- 
- 
-
-# Calculando o valor total da compra 
-
-valor_total = sum(produto['preco'] * produto['quantidade'] for produto in carrinho) 
-
- 
- 
-
-# Imprimindo as informações da compra 
-
-print("\nProdutos escolhidos:") 
-print(f"\ncnpj:{cnpj}")
-
-for produto in carrinho: 
-
- print(f"{produto['quantidade']} x {produto['produto']} - R${produto['preco']}") 
-
-print(f"\nValor total da compra: R${valor_total}") 
-
-
- 
-
+        case _:
+            print("Opção inválida. Tente novamente.")
