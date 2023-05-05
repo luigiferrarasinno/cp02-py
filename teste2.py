@@ -1,14 +1,26 @@
+""" 
+luigi ferrara rm98047
+davi guerra 
+Rui  Amorim Siqueira98436
+caua
+carlos eduardo
+"""
+
+#criando lista para salvar variaveis
 nome = []
 cnpjj = []
 quant = []
 vlt = []
 
+#criando menu principal
 while True:
     opcao = int(input("Digite a opção desejada:\n1 para controle de estoque\n2 para controle de compras\n"))
     
+    
+    #criando opçoes de controle de estoque 
     match opcao:
         case 1:
-            opestoque = int(input("Digite\n1 para ver o estoque\n2 para retirar item do estoque\n"))
+            opestoque = int(input("Digite\n1 para ver o estoque\n2 para registrar venda\n"))
             if opestoque == 1:
                 if not any(quant):
                     print("Não há itens no estoque.")
