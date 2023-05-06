@@ -11,6 +11,7 @@ nome = []
 cnpjj = []
 quant = []
 vlt = []
+qntestoque=[]
 
 #criando menu principal
 while True:
@@ -52,7 +53,7 @@ while True:
                             #imprimindo historico
                             print(f"CNPJ do fornecedor: {cnpjj[i]}")
                             print(f"Nome do produto: {nome[i]}")
-                            print(f"Quantidade: {quant[i]}")
+                            print(f"Quantidade: {qntestoque[i]}")
                             print(f"Valor total da compra: {vlt[i]}\n")        
         #criando a opção de controle de compra        
         case 2:
@@ -72,6 +73,7 @@ while True:
                     cnpjj.append(cnpj)
                     quant.append(quantidade)
                     vlt.append(valort)
+                    qntestoque.append(quantidade)
                     
                     #imprimindo os valores das variaveis que foram pedidas acima
                     print("\nResumo da compra:")
@@ -90,7 +92,7 @@ while True:
                             #imprimindo os valores
                             print(f"CNPJ do fornecedor: {cnpjj[i]}")
                             print(f"Nome do produto: {nome[i]}")
-                            print(f"Quantidade: {quant[i]}")
+                            print(f"Quantidade: {qntestoque[i]}")
                             print(f"Valor total da compra: {vlt[i]}\n")
                             
                 elif opcao2 == 3:#criando opção de ver o estoque 
@@ -108,3 +110,4 @@ while True:
                 
         case _:# criando uma menssagem para caso o  usuario aperte uma tecla não configurada
             print("Opção inválida. Tente novamente.")
+
